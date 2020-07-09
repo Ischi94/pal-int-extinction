@@ -1,0 +1,2 @@
+# Simulations
+This is the code to reproduce the simulations/ sensitivity analysis. The *durations.csv* file shows the true durations and the analised data. Taxon durations for the simulations where drawn from the true durations. 

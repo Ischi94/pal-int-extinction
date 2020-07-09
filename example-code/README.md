@@ -1,3 +1,4 @@
+# Example code
 Here we deposited clean and concise R-scripts showing how to download data, clean it, and fit a model. Each R script is commented to guide the reader through each analytical step.  
 The raw data sets used in our analysis are stored in here as well and results can be reproduced by substituting the data set/ taxon of interest with the examplatory bivalve data set used throughout the scripts. You can either download a new taxon as explained in the script, or use one of the deposited data sets that were used for the real analysis (due to updating of data bases such as NOW or PBDB, data sets may vary and give differing results. That's why we uploaded the raw data as well in the *data* folder.  
   
