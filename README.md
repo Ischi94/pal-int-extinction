@@ -7,3 +7,5 @@ The raw and less structured R scripts for the remaining taxa can be found in the
 The only difference between the *examplatory-code* and the raw files is the degree of code conciseness and commentation. The structure of the code stays the same and will give the same results. The *examplatory-code* is just designed to guide the reader through the analytical process in a neatly arranged way.  
   
 The folder *temp_data* contains the raw isotope data and files showing how we processed it to get the palaeotemperature.  
+  
+The folder *simulations* contains the code and files to reproduce the simulations/ sensitivity analysis. 
