@@ -32,6 +32,7 @@ library(lme4)
 library(visreg)
 library(geiger)
 library(stargazer)
+library(here)
 
 
 # function needed for overdispersion test
@@ -58,7 +59,7 @@ overdisp_fun <- function(model) {
 # if you have processed other data than bivalves in the "data_preparation.R" file, you can load it in here and 
 # use it for the GLMM. But keep in mind that some of these contain an additional taxonmical trend, which needs 
 # to be considered in the following calculation as well
-thirteen_trends_bivalves <- read.table("thirteen_trends_bivalves.csv")
+thirteen_trends_bivalves <- read.table(here("example-code/data/thirteen_trends_bivalves.csv"))
 
 
 
