@@ -35,6 +35,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(divDyn)
+library(here)
 
 
 
@@ -169,7 +170,7 @@ bivalves <- subset(bivalves, bivalves$FAD_bin >=14)
 
 # prepare weizer & prokoph temperature data. We are loading the file which was already processed as described
 # in the methods paragraph and as described by Reddin et al. 2017
-isotemp <- read.csv(file="TimeSeriesUsed.csv", header=TRUE,row.names = 1) 
+isotemp <- read.csv(file=here("example-code/data/TimeSeriesUsed.csv"), header=TRUE,row.names = 1) 
 
 # assign age to isotope data
 isotemp$age <- gradstein$mid[14:94]
@@ -447,5 +448,5 @@ thirteen_trends_bivalves <- full_join(three_trends_bivalves, isotemp2)
 thirteen_trends_bivalves %<>% transform(bins = as.numeric(as.character(bins)))
 
 # save it to your working directory
-write.table(thirteen_trends_bivalves, file = "thirteen_trends_bivalves.csv")
+# write.table(thirteen_trends_bivalves, file = "thirteen_trends_bivalves.csv")
 
