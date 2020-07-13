@@ -6,11 +6,8 @@
 # subsequently we add temperature data and calculate short-term and long-
 # term trends of temperature change as an input for the final GLMMs
 
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
 
-
+# load libraries
 library(magrittr)
 library(readr)
 library(tidyr)
@@ -109,7 +106,7 @@ bivalves <- subset(bivalves, bivalves$FAD_bin != bivalves$LAD_bin)
 # subset to the same bins as we currently have for isotemp (>= 14)
 bivalves <- subset(bivalves, bivalves$FAD_bin >=14)
 
-#write.table(bivalves, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/clean_data/bivalvia.csv")
+#write.table(bivalves, file = "bivalvia.csv")
 
 #detach("package:plyr", unload=TRUE)
 # Calculate average Temperature and standard deviation per bin

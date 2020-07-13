@@ -1,8 +1,4 @@
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
+# load libraries
 library(magrittr)
 library(readr)
 library(tidyr)
@@ -104,7 +100,7 @@ echinoderms <- subset(echinoderms, echinoderms$FAD_bin != echinoderms$LAD_bin)
 # subset to the same bins as we currently have for isotemp (>= 14)
 echinoderms <- subset(echinoderms, echinoderms$FAD_bin >=14)
 
-#write.table(echinoderms, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/clean_data/echinodermata.csv")
+#write.table(echinoderms, file = "echinodermata.csv")
 
 #detach("package:plyr", unload=TRUE)
 # Calculate average Temperature and standard deviation per bin

@@ -1,10 +1,4 @@
-# set working directory
-setwd("C:/Users/gmath/Documents/4.Semester/Masterarbeit") 
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
+# load libraries
 library(magrittr)
 library(readr)
 library(tidyr)
@@ -105,7 +99,7 @@ dinos <- subset(dinos, dinos$FAD_bin != dinos$LAD_bin)
 # subset to the same bins as we currently have for isotemp (>= 14)
 dinos <- subset(dinos, dinos$FAD_bin >=14)
 
-#write.table(dinos, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/clean_data/dinosauria.csv")
+#write.table(dinos, file = "dinosauria.csv")
 
 #detach("package:plyr", unload=TRUE)
 # Calculate average Temperature and standard deviation per bin

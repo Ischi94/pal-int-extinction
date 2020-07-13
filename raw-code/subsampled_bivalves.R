@@ -6,14 +6,7 @@
 # subsequently we add temperature data and calculate short-term and long-
 # term trends of temperature change as an input for the final GLMMs
 
-# set working directory
-setwd("C:/Users/gmath/Documents/Master/4.Semester/Masterarbeit") 
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
-
+# load libraries
 library(tidyr)
 library(dplyr)
 library(divDyn)
@@ -344,7 +337,7 @@ thirteen_trends_bivalves <- thirteen_trends_bivalves[-2944,]
 rm(gradstein, isotemp2)
 
 ### calculate glmm ###
-
+# load libraries
 library(lme4)
 library(geiger)
 library(visreg)

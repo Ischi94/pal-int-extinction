@@ -1,7 +1,4 @@
 
-#remove workspace
-rm(list = ls())
-
 # Load range through and temperature data
 source("echinoderms_pbdb.R")
 
@@ -12,7 +9,7 @@ source("echinoderms_pbdb.R")
 #Extract the outliers from the original data frame
 #fourteen_trends <- fourteen_trends[!fourteen_trends$change.prev %in% outliers,]
 #######################################
-
+# load libraries
 library(ggplot2)
 library(lme4)
 library(visreg)
@@ -83,7 +80,7 @@ summary(modelsw4[[which(warm_fourteen_trends$dAIC==0)]])
 
 s <- summary(modelsw4[[which(warm_fourteen_trends$dAIC==0)]])
 
-capture.output(s, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Model_summaries/Echinoderms_warm.txt")
+capture.output(s, file = "Echinoderms_warm.txt")
 
 coefm1 <- coef(modelsw4[[which(warm_fourteen_trends$dAIC==0)]])
 coefm1$Genus[1:10,]
@@ -94,8 +91,7 @@ coefm1$Genus[1:10,]
 warm.p1<-visreg(modelsw4[[which(warm_fourteen_trends$dAIC==0)]], "warming", scale="response", 
                 
                 by=paste(warm_fourteen_trends[which(warm_fourteen_trends$dAIC==0),1]), 
-                #                                breaks = c(-0.5,0.5),
-                
+
                 rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5)) 
 
 warm.p1<-warm.p1 + labs(x="Warming", y="Extinction response") +
@@ -108,8 +104,7 @@ warm.p1<-warm.p1 + labs(x="Warming", y="Extinction response") +
 vis_out_w4 <- visreg(modelsw4[[which(warm_fourteen_trends$dAIC==0)]], "warming", scale="response", 
                      
                      by=paste(warm_fourteen_trends[which(warm_fourteen_trends$dAIC==0),1]), 
-                     #                breaks = c(-0.5,0.5),
-                     
+
                      rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
 
 
@@ -181,7 +176,7 @@ summary(modelsc4[[which(cool_fourteen_trends$dAIC==0)]])
 
 s <- summary(modelsc4[[which(cool_fourteen_trends$dAIC==0)]])
 
-capture.output(s, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Model_summaries/Echinoderms_cool.txt")
+capture.output(s, file = "Echinoderms_cool.txt")
 
 coefm2 <- coef(modelsc4[[which(cool_fourteen_trends$dAIC==0)]])
 coefm2$Genus[1:10,]
@@ -195,8 +190,7 @@ coefm2$Genus[1:10,]
 cool.p1<-visreg(modelsc4[[which(cool_fourteen_trends$dAIC==0)]], "cooling", scale="response", 
                 
                 by=paste(cool_fourteen_trends[which(cool_fourteen_trends$dAIC==0),1]), 
-                #                breaks = c(-0.2,0.2),
-                
+
                 rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5)) 
 
 cool.p1<-cool.p1 + labs(x="Cooling", y="Extinction response") +
@@ -210,8 +204,7 @@ cool.p1<-cool.p1 + labs(x="Cooling", y="Extinction response") +
 vis_out_c4 <- visreg(modelsc4[[which(cool_fourteen_trends$dAIC== 0)]], "cooling", scale="response", 
                      
                      by=paste(cool_fourteen_trends[which(cool_fourteen_trends$dAIC==0),1]), 
-                     #                     breaks = c(-0.2,0.2),
-                     
+
                      rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
 
 
@@ -219,7 +212,7 @@ vis_out_c4 <- visreg(modelsc4[[which(cool_fourteen_trends$dAIC== 0)]], "cooling"
 vis_out_c4$fit$ctrend <- ifelse(vis_out_c4$fit$trend4<0,"Trend = Cooling", "Trend = Warming")
 
 write.table(vis_out_c4$fit, 
-            file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Visreg/Echinoderms_cool.csv")
+            file = "Echinoderms_cool.csv")
 
 # Basic box plot
 ggplot(vis_out_c4$fit, aes(x=ctrend, y=visregFit, fill=ctrend)) + 
@@ -255,7 +248,7 @@ wilcox.test(vis_out_c4$fit$visregFit[vis_out_c4$fit$ctrend=="Trend = Cooling"],
 #  ylab(expression(delta*"AIC")) + 
 #  theme_classic() + theme(text = element_text(size = 14))
 
-#ggsave(file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/AIC_plots/echinoderms_cool.pdf",cool.p2)
+#ggsave(file = "echinoderms_cool.pdf",cool.p2)
 
 
 
@@ -271,4 +264,4 @@ wilcox.test(vis_out_c4$fit$visregFit[vis_out_c4$fit$ctrend=="Trend = Cooling"],
 #  scale_x_continuous("Long-term duration (My)", 1:14, limits=c(1,14)) + 
 #  ylab(expression(delta*"AIC")) + theme_classic() + theme(text = element_text(size = 14))
 
-#ggsave(file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/AIC_plots/echinoderms_warm.pdf",warm.p2)
+#ggsave(file = "echinoderms_warm.pdf",warm.p2)

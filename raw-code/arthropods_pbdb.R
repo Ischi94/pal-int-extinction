@@ -1,9 +1,5 @@
 
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
+# load libraries
 library(magrittr)
 library(readr)
 library(tidyr)
@@ -104,7 +100,7 @@ arthropods <- subset(arthropods, arthropods$FAD_bin != arthropods$LAD_bin)
 # subset to the same bins as we currently have for isotemp (>= 14)
 arthropods <- subset(arthropods, arthropods$FAD_bin >=14)
 
-#write.table(arthropods, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/clean_data/arthropoda.csv")
+#write.table(arthropods, file = "arthropoda.csv")
 
 
 #detach("package:plyr", unload=TRUE)

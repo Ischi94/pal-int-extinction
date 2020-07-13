@@ -49,7 +49,7 @@ library(here)
 # arthropoda, gastropoda, reptilia, cnidaria, echinodermata 
 
 # this might take some time, as it is quite a big file
-# if this takes too long, you can directly download the cleaned data file at code line 150
+# if this takes too long, you can directly download the cleaned data file at code line 159
 bivalves_pbdb <-  pbdb_occurrences(limit="all",
                              base_name="bivalvia", vocab="pbdb",
                              show=c("coords", "phylo", "ident"))

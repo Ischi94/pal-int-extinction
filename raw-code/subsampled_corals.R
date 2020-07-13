@@ -1,11 +1,4 @@
-# set working directory
-setwd("C:/Users/gmath/Documents/Master/4.Semester/Masterarbeit") 
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
-
+# load libraries
 library(tidyr)
 library(dplyr)
 library(divDyn)
@@ -338,7 +331,7 @@ thirteen_trends_corals <- thirteen_trends_corals[-c(1500:1502),]
 rm(gradstein, isotemp2)
 
 ### calculate glmm ###
-
+# load libraries
 library(lme4)
 library(geiger)
 library(visreg)

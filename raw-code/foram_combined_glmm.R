@@ -1,12 +1,5 @@
 #### 
 
-### Let's try Jeroen's GLMM with my range through data with information about short temp-change and long
-# temp-trends (up to 10 stages, without the respective short-term change)
-
-
-#remove workspace
-rm(list = ls())
-
 # Load range through and temperature data
 source("9fourteen_trends.R")
 source("12foram_planktonic.R")
@@ -20,7 +13,7 @@ fourteen_trends <- rbind(fourteen_trends, fourteen_trends_foram_plank)
 #Extract the outliers from the original data frame
 #fourteen_trends <- fourteen_trends[!fourteen_trends$change.prev %in% outliers,]
 #######################################
-
+# load libraries
 library(ggplot2)
 library(lme4)
 library(visreg)
@@ -87,7 +80,7 @@ summary(modelsw[[which(warm_fourteen_trends$dAIC==0)]])
 
 s <- summary(modelsw[[which(warm_fourteen_trends$dAIC==0)]])
 
-capture.output(s, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Model_summaries/Forams_warm.txt")
+capture.output(s, file = "Forams_warm.txt")
 
 #coef(modelsw[[which(warm_fourteen_trends$dAIC==0)]])
 
@@ -104,8 +97,7 @@ for (i in 1:14) {
   vis_out_w <- visreg(modelsw[[i]], "warming", scale="response", 
                         
                         by=paste(warm_fourteen_trends[i,1]), 
-                        #                breaks = c(-0.5,0.5),
-                        
+
                         rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
   
   
@@ -125,8 +117,7 @@ for (i in 1:14) {
 
 warm.p1<-visreg(modelsw[[which(warm_fourteen_trends$dAIC==0)]], "warming", 
                 scale="response", 
-                #                breaks = c(-0.175,0.014),
-                
+
                 by=paste(warm_fourteen_trends[which(warm_fourteen_trends$dAIC==0),1]),
                 
                 rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5)) 
@@ -144,15 +135,14 @@ visreg2d(modelsw[[which(warm_fourteen_trends$dAIC==0)]], "warming", "trend.st4",
 vis_out_w14 <- visreg(modelsw[[which(warm_fourteen_trends$dAIC==0)]], "warming", scale="response", 
                       
                       by=paste(warm_fourteen_trends[which(warm_fourteen_trends$dAIC==0),1]), 
-                      #                breaks = c(-0.5,0.5),
-                      
+
                       rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
 
 
 vis_out_w14$fit$ctrend <- ifelse(vis_out_w14$fit$trend.st4<0, "Trend = Cooling", "Trend = Warming")
 
 write.table(vis_out_w14$fit, 
-            file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Visreg/Forams_warm.csv")
+            file = "Forams_warm.csv")
 
 # Basic box plot
 windows(7,5)
@@ -232,8 +222,7 @@ for (i in 1:14) {
   vis_out_c <- visreg(modelsc[[i]], "cooling", scale="response", 
                       
                       by=paste(cool_fourteen_trends[i,1]), 
-                      #                breaks = c(-0.5,0.5),
-                      
+
                       rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
   
   
@@ -255,7 +244,7 @@ summary(modelsc[[which(cool_fourteen_trends$dAIC==0)]])
 
 s <- summary(modelsc[[which(cool_fourteen_trends$dAIC==0)]])
 
-capture.output(s, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Model_summaries/Forams_cool.txt")
+capture.output(s, file = "Model_summaries/Forams_cool.txt")
 
 #coef(modelsc[[which(cool_fourteen_trends$dAIC==0)]])
 #for_cool <- read.table("for_cool.csv", sep=" ")
@@ -280,15 +269,13 @@ cool.p1<-cool.p1 + labs(x="Cooling", y="Extinction response") +
 vis_out_c14 <- visreg(modelsc[[which(cool_fourteen_trends$dAIC==0)]], "cooling", scale="response", 
                       
                       by=paste(cool_fourteen_trends[which(cool_fourteen_trends$dAIC==0),1]), 
-                      #                breaks = c(-0.5,0.5),
-                      
+
                       rug=2, strip.names=F, gg=T, line=list(col="#65a3a4", size=1.5), plot = F) 
 
 
 vis_out_c14$fit$ctrend <- ifelse(vis_out_c14$fit$trend.st3<0, "Trend = Cooling", "Trend = Warming")
 
-#write.table(vis_out_c14$fit, 
-#            file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/Visreg/Forams_cool.csv")
+#write.table(vis_out_c14$fit, file = "Forams_cool.csv")
 
 # Basic box plot
 ggplot(vis_out_c14$fit, aes(x=ctrend, y=visregFit, fill=ctrend)) + 
@@ -325,7 +312,7 @@ wilcox.test(vis_out_c14$fit$visregFit[vis_out_c14$fit$ctrend=="Trend = Cooling"]
 #  ylab(expression(delta*"AIC")) + 
 #  theme_classic() + theme(text = element_text(size = 14))
 
-#ggsave(file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/AIC_plots/forams_cool.pdf",cool.p2)
+#ggsave(file = "forams_cool.pdf",cool.p2)
 
 
 
@@ -341,4 +328,4 @@ wilcox.test(vis_out_c14$fit$visregFit[vis_out_c14$fit$ctrend=="Trend = Cooling"]
 #  scale_x_continuous("Long-term duration (My)", 1:14, limits=c(1,14)) + 
 #  ylab(expression(delta*"AIC")) + theme_classic() + theme(text = element_text(size = 14))
 
-#ggsave(file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/AIC_plots/forams_warm.pdf",warm.p2)
+#ggsave(file = "forams_warm.pdf",warm.p2)

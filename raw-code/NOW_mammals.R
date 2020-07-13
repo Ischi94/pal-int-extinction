@@ -1,8 +1,4 @@
-
-# keep in mind that you have only isotope data starting at the ordovician!
-#remove workspace
-rm(list = ls())
-
+# load libraries
 library(magrittr)
 library(readr)
 library(tidyr)
@@ -111,7 +107,7 @@ mammals <- subset(mammals, mammals$FAD_bin != mammals$LAD_bin)
 # subset to the same bins as we currently have for isotemp (>= 14)
 mammals <- subset(mammals, mammals$FAD_bin >=14)
 
-#write.table(mammals, file = "C:/Users/gmath/Documents/4.Semester/Masterarbeit/clean_data/mammalia.csv")
+#write.table(mammals, file = "mammalia.csv")
 
 #detach("package:plyr", unload=TRUE)
 # Calculate average Temperature and standard deviation per bin
