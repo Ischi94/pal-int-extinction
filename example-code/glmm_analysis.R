@@ -66,7 +66,10 @@ thirteen_trends_bivalves <- read.table(here("example-code/data/thirteen_trends_b
 
 # 1 Prepare fossil data for Generalised Mixed Effect Models (GLMM' --------
 
-
+# replace the NA's with zeros as we have no trend there
+thirteen_trends_bivalves$trend1[is.na(thirteen_trends_bivalves$trend1)] <- 0
+thirteen_trends_bivalves$trend2[is.na(thirteen_trends_bivalves$trend2)] <- 0
+thirteen_trends_bivalves$trend3[is.na(thirteen_trends_bivalves$trend3)] <- 0
 
 # Split short term temperature change into warming and cooling, to calculate the results for each:
 thirteen_trends_bivalves$cooling<-ifelse(thirteen_trends_bivalves$change.prev<0, thirteen_trends_bivalves$change.prev, NA)
