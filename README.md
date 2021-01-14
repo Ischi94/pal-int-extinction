@@ -52,6 +52,10 @@ This script tests whether mass extinction bias our results. It runs a GLMM on al
   
 This script uses raw data downloaded from the NOW database for mammals, cleans it and then processes it to produce the input for the final model in *glmm-analysis.R*.  
   
+### nr_species.R  
+  
+This script simply calculates the total number of distinct species per groups and sums them up.  
+  
 ### pbdb-preparation.R  
   
 This script shows how to download data from the Paleobiology database (PBDB) within R using the new API. It then cleans the data and processes it to produce the input for the final model in *glmm-analysis.R*.  
