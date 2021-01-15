@@ -1,5 +1,4 @@
 library(tidyverse)
-library(here)
 
 # define function to access the pbdb, returns an url
 get_pbdb_url <- function(taxon){
